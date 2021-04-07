@@ -1,0 +1,24 @@
+<h1 id="ruffle-selfhosted"><a href="#ruffle-selfhosted" class="headerlink" title="ruffle-selfhosted"></a>ruffle-selfhosted</h1><p>ruffle-selfhosted is the intended way to get Ruffle onto your website.</p>
+<p>You may either include it and forget about it, and we will polyfill existing Flash content,<br>or use our APIs for custom configurations or more advanced usages of the Ruffle player.</p>
+<h2 id="Using-ruffle-selfhosted"><a href="#Using-ruffle-selfhosted" class="headerlink" title="Using ruffle-selfhosted"></a>Using ruffle-selfhosted</h2><p>For more examples and in-depth documentation on how to use Ruffle on your website, please<br><a href="https://github.com/ruffle-rs/ruffle/wiki/Using-Ruffle#web">check out our wiki</a>.</p>
+<h3 id="Host-Ruffle"><a href="#Host-Ruffle" class="headerlink" title="Host Ruffle"></a>Host Ruffle</h3><p>The <code>selfhosted</code> package is configured for websites that do not use bundlers or npm and just want<br>to get up and running. If you’d prefer to use Ruffle through npm and a bundler, please<br><a href="https://github.com/ruffle-rs/ruffle/tree/master/web/packages/core">refer to ruffle core</a>.</p>
+<p>Before you can get started with using Ruffle on your website, you must host its files yourself.<br>Either take the <a href="https://github.com/ruffle-rs/ruffle/releases">latest build</a><br>or <a href="../../README.md">build it yourself</a>, and make these files accessible by your web server.</p>
+<p>Please note that the <code>.wasm</code> file must be served properly, and some web servers may not do that<br>correctly out of the box. Please see <a href="https://github.com/ruffle-rs/ruffle/wiki/Using-Ruffle#configure-wasm-mime-type">our wiki</a><br>for instructions on how to configure this, if you encounter a <code>Incorrect response MIME type</code> error.</p>
+<h3 id="“Plug-and-Play”"><a href="#“Plug-and-Play”" class="headerlink" title="“Plug and Play”"></a>“Plug and Play”</h3><p>If you have an existing website with flash content, you can simply include Ruffle as a script and<br>our polyfill magic will replace everything for you. No fuss, no mess.</p>
+<pre><code class="html">&lt;script src=&quot;path/to/ruffle/ruffle.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h3 id="Javascript-API"><a href="#Javascript-API" class="headerlink" title="Javascript API"></a>Javascript API</h3><p>If you want to control the Ruffle player, you may use our Javascript API.</p>
+<pre><code class="html">&lt;script&gt;
+    window.RufflePlayer = window.RufflePlayer || {};
+
+    window.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
+        let ruffle = window.RufflePlayer.newest();
+        let player = ruffle.createPlayer();
+        let container = document.getElementById(&quot;container&quot;);
+        container.appendChild(player);
+        player.load(&quot;movie.swf&quot;);
+    });
+&lt;/script&gt;
+&lt;script src=&quot;path/to/ruffle/ruffle.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h2 id="Building-testing-or-contributing"><a href="#Building-testing-or-contributing" class="headerlink" title="Building, testing or contributing"></a>Building, testing or contributing</h2><p>Please see <a href="../../README.md">the ruffle-web README</a>.</p>
