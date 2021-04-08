@@ -296,8 +296,10 @@
       player.style.paddingTop='50%';
       player.style.paddingBottom='50%';
       player.load("/assets/hamster.swf").then(() => {
-        let play_button=document.getElementById('play_button');
-        console.log(play_button,'////');
+        let play_button=player.shadowRoot.getElementById('play_button');
+        if(play_button.style.display!=="none"){
+          play_button.click();
+        }
         console.info("Ruffle successfully loaded the file");
         }).catch((e) => {
             console.error(`Ruffle failed to load the file: ${e}`);
