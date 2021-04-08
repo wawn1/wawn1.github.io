@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>My First Post</title>
-    <url>/posts/10b5e3da.html</url>
-    <content><![CDATA[<h3 id="hello-word"><a href="#hello-word" class="headerlink" title="hello word"></a>hello word</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;aaasdasd&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a href="/posts/4a17b156.html" title="你好">你好</a>
-]]></content>
-      <categories>
-        <category>React</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/posts/4a17b156.html</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -30,6 +20,16 @@
 ]]></content>
       <categories>
         <category>Algorithm</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>My First Post</title>
+    <url>/posts/10b5e3da.html</url>
+    <content><![CDATA[<h3 id="hello-word"><a href="#hello-word" class="headerlink" title="hello word"></a>hello word</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;aaasdasd&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a href="/posts/4a17b156.html" title="你好">你好</a>
+]]></content>
+      <categories>
+        <category>React</category>
       </categories>
   </entry>
   <entry>
