@@ -232,7 +232,7 @@
     3 categories in total
   </div>
   <div class="category-all">
-    <i class="fas fa-code-branch"></i> <span>Algorithm</span><ul><li><a href=https://wawn1.github.io/posts/4a17b156.html>Hello World</a></li></ul><hr/><i class="fab fa-react"></i> <span>React</span><ul><li><a href=https://wawn1.github.io/posts/10b5e3da.html>My First Post</a></li></ul><hr/><i class="fas fa-drafting-compass"></i> <span>Design Patterns</span><ul><li><a href=https://wawn1.github.io/posts/78a19d7.html>aa</a></li></ul><hr/>
+    <i class="fab fa-react"></i> <span>React</span><ul><li><a href=https://wawn1.github.io/posts/10b5e3da.html>My First Post</a></li></ul><hr/><i class="fas fa-code-branch"></i> <span>Algorithm</span><ul><li><a href=https://wawn1.github.io/posts/4a17b156.html>Hello World</a></li></ul><hr/><i class="fas fa-drafting-compass"></i> <span>Design Patterns</span><ul><li><a href=https://wawn1.github.io/posts/78a19d7.html>aa</a></li></ul><hr/>
   </div>
 </div>
 
@@ -299,6 +299,8 @@
       player.style.paddingTop='50%';
       player.style.paddingBottom='50%';
       player.load("/assets/hamster.swf").then(() => {
+        let play_button=document.getElementById('play_button');
+        console.log(play_button,'////');
         console.info("Ruffle successfully loaded the file");
         }).catch((e) => {
             console.error(`Ruffle failed to load the file: ${e}`);
