@@ -26,7 +26,7 @@
     <title>My First Post</title>
     <url>/posts/10b5e3da.html</url>
     <content><![CDATA[<h3 id="hello-word"><a href="#hello-word" class="headerlink" title="hello word"></a>hello word</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;aaasdasd&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a href="/posts/4a17b156.html" title="你好">你好</a>
+<p><span class='sp_font'><a href="/posts/4a17b156.html" title="你好">你好</a></span><br><img src="https://www.hualigs.cn/image/606ea88867669.jpg" alt="time"></p>
 ]]></content>
       <categories>
         <category>React</category>
