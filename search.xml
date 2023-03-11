@@ -67,4 +67,33 @@
         <category>Design Patterns</category>
       </categories>
   </entry>
+  <entry>
+    <title>leetcode518</title>
+    <url>/posts/d72084ba.html</url>
+    <content><![CDATA[<h4 id="518-零钱兑换-II"><a href="#518-零钱兑换-II" class="headerlink" title="518. 零钱兑换 II"></a><a href="https://leetcode.cn/problems/coin-change-ii/">518. 零钱兑换 II</a></h4><p>给你一个整数数组 coins 表示不同面额的硬币，另给一个整数 amount 表示总金额。</p>
+<p>请你计算并返回可以凑成总金额的硬币组合数。如果任何硬币组合都无法凑出总金额，返回 0 。</p>
+<p>假设每一种面额的硬币有无限个。 </p>
+<p>题目数据保证结果符合 32 位带符号整数。</p>
+<p>示例 1：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">输入：amount &#x3D; 5, coins &#x3D; [1, 2, 5]</span><br><span class="line">输出：4</span><br><span class="line">解释：有四种方式可以凑成总金额：</span><br><span class="line">5&#x3D;5</span><br><span class="line">5&#x3D;2+2+1</span><br><span class="line">5&#x3D;2+1+1+1</span><br><span class="line">5&#x3D;1+1+1+1+1</span><br></pre></td></tr></table></figure>
+
+
+<p>示例 2：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">输入：amount &#x3D; 3, coins &#x3D; [2]</span><br><span class="line">输出：0</span><br><span class="line">解释：只用面额 2 的硬币不能凑成总金额 3 。</span><br></pre></td></tr></table></figure>
+<p>示例 3：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：amount &#x3D; 10, coins &#x3D; [10] </span><br><span class="line">输出：1</span><br></pre></td></tr></table></figure>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode.cn/problems/coin-change-ii">https://leetcode.cn/problems/coin-change-ii</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h4 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dp[i][j] 表示给看前i个硬币，组成数目j的方案数量</span><br><span class="line"></span><br><span class="line">分类讨论</span><br><span class="line">为了不包含重复解，分2种情况，一定包含第i个硬币，一定不包含第i个硬币 2种情况下都包含部分解</span><br><span class="line">dp[i][j]&#x3D;</span><br><span class="line">+dp[i][j-coin] 给看前i个硬币，组成数目j-coin 的方案数量 i不动还可以继续选</span><br><span class="line">+dp[i-1][j] 给看前i-1个硬币，组成数目j的方案数量</span><br><span class="line"></span><br><span class="line">dp[0][0]&#x3D;1 给看前0个银币，组成数目0方案数量1</span><br><span class="line">dp[0][i]&#x3D;0 给看前0个银币，组成数目i不是0的方案数量0</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="code"><a href="#code" class="headerlink" title="code"></a>code</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">change</span>(<span class="params">amount: <span class="built_in">number</span>, coins: <span class="built_in">number</span>[]</span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> n = coins.length,</span><br><span class="line">    m = amount;</span><br><span class="line">  <span class="keyword">let</span> dp = <span class="built_in">Array</span>(n + <span class="number">1</span>).fill(<span class="number">0</span>).map(<span class="function">() =&gt;</span> <span class="built_in">Array</span>(m + <span class="number">1</span>).fill(<span class="number">0</span>));</span><br><span class="line">  dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt;= m; j++) &#123;</span><br><span class="line">      dp[i][j] += dp[i - <span class="number">1</span>][j];</span><br><span class="line">      <span class="keyword">if</span> (j &gt;= coins[i - <span class="number">1</span>]) dp[i][j] += dp[i][j - coins[i - <span class="number">1</span>]];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> dp[n][m];</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">change</span>(<span class="params">amount: <span class="built_in">number</span>, coins: <span class="built_in">number</span>[]</span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> n = coins.length,</span><br><span class="line">    m = amount;</span><br><span class="line">  <span class="keyword">let</span> dp = <span class="built_in">Array</span>(m + <span class="number">1</span>).fill(<span class="number">0</span>);</span><br><span class="line">  dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = coins[i - <span class="number">1</span>]; j &lt;= m; j++) &#123;</span><br><span class="line">      dp[j] += dp[j - coins[i - <span class="number">1</span>]];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> dp[m];</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+  </entry>
 </search>
