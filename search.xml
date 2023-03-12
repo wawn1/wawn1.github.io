@@ -169,4 +169,27 @@
         <category>Algorithm</category>
       </categories>
   </entry>
+  <entry>
+    <title>leetcode516</title>
+    <url>/posts/3098a9bd.html</url>
+    <content><![CDATA[<h4 id="516-最长回文子序列"><a href="#516-最长回文子序列" class="headerlink" title="516. 最长回文子序列"></a><a href="https://leetcode.cn/problems/longest-palindromic-subsequence/">516. 最长回文子序列</a></h4><p>给你一个字符串 s ，找出其中最长的回文子序列，并返回该序列的长度。</p>
+<p>子序列定义为：不改变剩余字符顺序的情况下，删除某些字符或者不删除任何字符形成的一个序列。</p>
+<p>示例 1：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：s &#x3D; &quot;bbbab&quot;</span><br><span class="line">输出：4</span><br><span class="line">解释：一个可能的最长回文子序列为 &quot;bbbb&quot; 。</span><br></pre></td></tr></table></figure>
+<p>示例 2：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：s &#x3D; &quot;cbbd&quot;</span><br><span class="line">输出：2</span><br><span class="line">解释：一个可能的最长回文子序列为 &quot;bb&quot; 。</span><br></pre></td></tr></table></figure>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode.cn/problems/longest-palindromic-subsequence">https://leetcode.cn/problems/longest-palindromic-subsequence</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h4 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dp[l][r] 表示从l到r的字符串，最长回文子序列</span><br><span class="line"></span><br><span class="line">l r字符回文，分类讨论</span><br><span class="line">如果s[l]&#x3D;&#x3D;&#x3D;s[r], dp[l+1][r-1]+2</span><br><span class="line">如果s[l]!&#x3D;&#x3D;s[r], max(dp[l+1][r], dp[l][r-1])</span><br><span class="line">    </span><br><span class="line">初始化</span><br><span class="line">dp[i][i]&#x3D;1</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="code"><a href="#code" class="headerlink" title="code"></a>code</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">longestPalindromeSubseq</span>(<span class="params">s: <span class="built_in">string</span></span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> n = s.length;</span><br><span class="line">  <span class="keyword">let</span> dp = <span class="built_in">Array</span>(n)</span><br><span class="line">    .fill(<span class="number">0</span>)</span><br><span class="line">    .map(<span class="function">() =&gt;</span> <span class="built_in">Array</span>(n).fill(<span class="number">0</span>));</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 枚举字符串长度</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j + i &lt; n; j++) &#123;</span><br><span class="line">      <span class="keyword">let</span> l = j,</span><br><span class="line">        r = j + i;</span><br><span class="line">      <span class="keyword">if</span> (i === <span class="number">0</span>) &#123;</span><br><span class="line">        dp[l][r] = <span class="number">1</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (s[l] === s[r]) &#123;</span><br><span class="line">          dp[l][r] = dp[l + <span class="number">1</span>][r - <span class="number">1</span>] + <span class="number">2</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          dp[l][r] = <span class="built_in">Math</span>.max(dp[l + <span class="number">1</span>][r], dp[l][r - <span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> dp[<span class="number">0</span>][n - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+  </entry>
 </search>
