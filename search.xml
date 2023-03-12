@@ -57,17 +57,6 @@
       </categories>
   </entry>
   <entry>
-    <title>aa</title>
-    <url>/posts/78a19d7.html</url>
-    <content><![CDATA[<h3 id="hello-word"><a href="#hello-word" class="headerlink" title="hello word"></a>hello word</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;aaasdasd&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a href="/posts/4a17b156.html" title="Hello World">Hello World</a>
-<p>相对路径  source/_posts 目录为根目录</p>
-]]></content>
-      <categories>
-        <category>Design Patterns</category>
-      </categories>
-  </entry>
-  <entry>
     <title>leetcode518</title>
     <url>/posts/d72084ba.html</url>
     <content><![CDATA[<h4 id="518-零钱兑换-II"><a href="#518-零钱兑换-II" class="headerlink" title="518. 零钱兑换 II"></a><a href="https://leetcode.cn/problems/coin-change-ii/">518. 零钱兑换 II</a></h4><p>给你一个整数数组 coins 表示不同面额的硬币，另给一个整数 amount 表示总金额。</p>
@@ -217,5 +206,11 @@
       <categories>
         <category>Algorithm</category>
       </categories>
+  </entry>
+  <entry>
+    <title>answer</title>
+    <url>/posts/78a19d7.html</url>
+    <content><![CDATA[<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.retry = <span class="function">(<span class="params">fn, times = <span class="number">0</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> fn().catch(<span class="function">() =&gt;</span> times &gt; <span class="number">0</span> ? <span class="built_in">Promise</span>.retry(fn, times - <span class="number">1</span>) : <span class="built_in">Promise</span>.reject())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
   </entry>
 </search>
