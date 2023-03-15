@@ -536,7 +536,7 @@
 <p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode.cn/problems/combinations">https://leetcode.cn/problems/combinations</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
 <h4 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h4><img src="/pic/select.png" />
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">选过的不能选，其他都可以选，来分叉</span><br><span class="line">组合就是  所有比它位置大的分叉出来</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">第一层表示第一个位置能选择1,2，3</span><br><span class="line">选过1后的第二层，表示第二个位置能选择2,3</span><br><span class="line"></span><br><span class="line">第一个位置选择了2，第二个位置只能选择3, 1的组合已经录入完了</span><br><span class="line">组合就是  所有比它位置大的分叉出来</span><br></pre></td></tr></table></figure>
 
 
 
