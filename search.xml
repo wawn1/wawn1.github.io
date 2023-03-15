@@ -182,23 +182,23 @@
       </categories>
   </entry>
   <entry>
-    <title>leetcode3</title>
-    <url>/posts/d83b9394.html</url>
-    <content><![CDATA[<h4 id="3-无重复字符的最长子串"><a href="#3-无重复字符的最长子串" class="headerlink" title="3. 无重复字符的最长子串"></a><a href="https://leetcode.cn/problems/longest-substring-without-repeating-characters/">3. 无重复字符的最长子串</a></h4><p>给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。</p>
-<p>示例 1:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: s &#x3D; &quot;abcabcbb&quot;</span><br><span class="line">输出: 3 </span><br><span class="line">解释: 因为无重复字符的最长子串是 &quot;abc&quot;，所以其长度为 3。</span><br></pre></td></tr></table></figure>
-<p>示例 2:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: s &#x3D; &quot;bbbbb&quot;</span><br><span class="line">输出: 1</span><br><span class="line">解释: 因为无重复字符的最长子串是 &quot;b&quot;，所以其长度为 1。</span><br></pre></td></tr></table></figure>
-<p>示例 3:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: s &#x3D; &quot;pwwkew&quot;</span><br><span class="line">输出: 3</span><br><span class="line">解释: 因为无重复字符的最长子串是 &quot;wke&quot;，所以其长度为 3。</span><br><span class="line">     请注意，你的答案必须是 子串 的长度，&quot;pwke&quot; 是一个子序列，不是子串。</span><br></pre></td></tr></table></figure>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode.cn/problems/longest-substring-without-repeating-characters">https://leetcode.cn/problems/longest-substring-without-repeating-characters</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h4 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">维护一个无重复的窗口</span><br><span class="line">如果重复就将左边的全裁掉 也去掉与自己相等的</span><br><span class="line"></span><br><span class="line">注意</span><br><span class="line">&quot;abba&quot;</span><br><span class="line">bba  把别人的重复包进去了， l 必须只能往前</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>leetcode322</title>
+    <url>/posts/b0f96b84.html</url>
+    <content><![CDATA[<h4 id="322-零钱兑换"><a href="#322-零钱兑换" class="headerlink" title="322. 零钱兑换"></a><a href="https://leetcode.cn/problems/coin-change/">322. 零钱兑换</a></h4><p>给你一个整数数组 coins ，表示不同面额的硬币；以及一个整数 amount ，表示总金额。</p>
+<p>计算并返回可以凑成总金额所需的 最少的硬币个数 。如果没有任何一种硬币组合能组成总金额，返回 -1 。</p>
+<p>你可以认为每种硬币的数量是无限的。</p>
+<p>示例 1：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：coins &#x3D; [1, 2, 5], amount &#x3D; 11</span><br><span class="line">输出：3 </span><br><span class="line">解释：11 &#x3D; 5 + 5 + 1</span><br></pre></td></tr></table></figure>
+<p>示例 2：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：coins &#x3D; [2], amount &#x3D; 3</span><br><span class="line">输出：-1</span><br></pre></td></tr></table></figure>
+<p>示例 3：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：coins &#x3D; [1], amount &#x3D; 0</span><br><span class="line">输出：0</span><br></pre></td></tr></table></figure>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode.cn/problems/coin-change">https://leetcode.cn/problems/coin-change</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h4 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dp[i] 表示随便拿硬币组成i，最少多少个</span><br><span class="line">假设最后拿到一个coin, dp[i-coin]已知，dp[i]的一个局部最优解 dp[i-coin]+1</span><br><span class="line">dp[i] &#x3D; min (dp[i-coins[j]]+1)</span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="code"><a href="#code" class="headerlink" title="code"></a>code</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">lengthOfLongestSubstring</span>(<span class="params">s: <span class="built_in">string</span></span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> hash = &#123;&#125;; <span class="comment">// 字符: 最近出现的位置</span></span><br><span class="line">  <span class="keyword">let</span> res = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> l = <span class="number">0</span>, r = <span class="number">0</span>; r &lt; s.length; r++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (s[r] <span class="keyword">in</span> hash) &#123;</span><br><span class="line">      <span class="comment">// 注意max, l往前</span></span><br><span class="line">      l = <span class="built_in">Math</span>.max(l, hash[s[r]] + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    hash[s[r]] = r;</span><br><span class="line">    res = <span class="built_in">Math</span>.max(res, r - l + <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
+<h4 id="code"><a href="#code" class="headerlink" title="code"></a>code</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">coinChange</span>(<span class="params">coins: <span class="built_in">number</span>[], amount: <span class="built_in">number</span></span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> dp = <span class="built_in">Array</span>(amount + <span class="number">1</span>).fill(<span class="built_in">Number</span>.MAX_VALUE);</span><br><span class="line">  dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= amount; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; coins.length; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (i &gt;= coins[j]) dp[i] = <span class="built_in">Math</span>.min(dp[i], dp[i - coins[j]] + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (dp[amount] === <span class="built_in">Number</span>.MAX_VALUE) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> dp[amount];</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -231,23 +231,24 @@
       </categories>
   </entry>
   <entry>
-    <title>leetcode322</title>
-    <url>/posts/b0f96b84.html</url>
-    <content><![CDATA[<h4 id="322-零钱兑换"><a href="#322-零钱兑换" class="headerlink" title="322. 零钱兑换"></a><a href="https://leetcode.cn/problems/coin-change/">322. 零钱兑换</a></h4><p>给你一个整数数组 coins ，表示不同面额的硬币；以及一个整数 amount ，表示总金额。</p>
-<p>计算并返回可以凑成总金额所需的 最少的硬币个数 。如果没有任何一种硬币组合能组成总金额，返回 -1 。</p>
-<p>你可以认为每种硬币的数量是无限的。</p>
-<p>示例 1：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：coins &#x3D; [1, 2, 5], amount &#x3D; 11</span><br><span class="line">输出：3 </span><br><span class="line">解释：11 &#x3D; 5 + 5 + 1</span><br></pre></td></tr></table></figure>
-<p>示例 2：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：coins &#x3D; [2], amount &#x3D; 3</span><br><span class="line">输出：-1</span><br></pre></td></tr></table></figure>
-<p>示例 3：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：coins &#x3D; [1], amount &#x3D; 0</span><br><span class="line">输出：0</span><br></pre></td></tr></table></figure>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode.cn/problems/coin-change">https://leetcode.cn/problems/coin-change</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h4 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dp[i] 表示随便拿硬币组成i，最少多少个</span><br><span class="line">假设最后拿到一个coin, dp[i-coin]已知，dp[i]的一个局部最优解 dp[i-coin]+1</span><br><span class="line">dp[i] &#x3D; min (dp[i-coins[j]]+1)</span><br></pre></td></tr></table></figure>
+    <title>leetcode35</title>
+    <url>/posts/730b4760.html</url>
+    <content><![CDATA[<h4 id="35-搜索插入位置"><a href="#35-搜索插入位置" class="headerlink" title="35. 搜索插入位置"></a><a href="https://leetcode.cn/problems/search-insert-position/">35. 搜索插入位置</a></h4><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
+<p>请必须使用时间复杂度为 O(log n) 的算法。</p>
+<p>示例 1:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: nums &#x3D; [1,3,5,6], target &#x3D; 5</span><br><span class="line">输出: 2</span><br></pre></td></tr></table></figure>
+<p>示例 2:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: nums &#x3D; [1,3,5,6], target &#x3D; 2</span><br><span class="line">输出: 1</span><br></pre></td></tr></table></figure>
+<p>示例 3:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: nums &#x3D; [1,3,5,6], target &#x3D; 7</span><br><span class="line">输出: 4</span><br></pre></td></tr></table></figure>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode.cn/problems/search-insert-position">https://leetcode.cn/problems/search-insert-position</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h4 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nums[mid]&gt;&#x3D;target可能是解，所有解的左边界</span><br><span class="line">二分搜索是闭区间[l,r]，区间外的解要特判</span><br><span class="line">空数组，插入到最后位置的情况</span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="code"><a href="#code" class="headerlink" title="code"></a>code</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">coinChange</span>(<span class="params">coins: <span class="built_in">number</span>[], amount: <span class="built_in">number</span></span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> dp = <span class="built_in">Array</span>(amount + <span class="number">1</span>).fill(<span class="built_in">Number</span>.MAX_VALUE);</span><br><span class="line">  dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= amount; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; coins.length; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (i &gt;= coins[j]) dp[i] = <span class="built_in">Math</span>.min(dp[i], dp[i - coins[j]] + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (dp[amount] === <span class="built_in">Number</span>.MAX_VALUE) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> dp[amount];</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="code"><a href="#code" class="headerlink" title="code"></a>code</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">searchInsert</span>(<span class="params">nums: <span class="built_in">number</span>[], target: <span class="built_in">number</span></span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> n = nums.length;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// []</span></span><br><span class="line">  <span class="keyword">if</span> (n === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// [1,2,3] 4</span></span><br><span class="line">  <span class="keyword">if</span> (nums[n - <span class="number">1</span>] &lt; target) &#123;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> l = <span class="number">0</span>,</span><br><span class="line">    r = n - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">    <span class="keyword">let</span> mid = (l + r) &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (nums[mid] &gt;= target) r = mid;</span><br><span class="line">    <span class="keyword">else</span> l = mid + <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
 
 ]]></content>
       <categories>
@@ -272,31 +273,6 @@
 
 
 <h4 id="code"><a href="#code" class="headerlink" title="code"></a>code</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">searchRange</span>(<span class="params">nums: <span class="built_in">number</span>[], target: <span class="built_in">number</span></span>): <span class="title">number</span>[] </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> n = nums.length;</span><br><span class="line">  <span class="keyword">if</span> (n === <span class="number">0</span>) <span class="keyword">return</span> [-<span class="number">1</span>, -<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> l = <span class="number">0</span>,</span><br><span class="line">    r = n - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">    <span class="keyword">let</span> mid = (l + r) &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (nums[mid] &gt;= target) r = mid;</span><br><span class="line">    <span class="keyword">else</span> l = mid + <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> lbound = l;</span><br><span class="line">  <span class="keyword">if</span> (nums[lbound] !== target) <span class="keyword">return</span> [-<span class="number">1</span>, -<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">  (l = <span class="number">0</span>), (r = n - <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">    <span class="keyword">let</span> mid = (l + r + <span class="number">1</span>) &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (nums[mid] &lt;= target) l = mid;</span><br><span class="line">    <span class="keyword">else</span> r = mid - <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> rbound = l;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> [lbound, rbound];</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>Algorithm</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>leetcode35</title>
-    <url>/posts/730b4760.html</url>
-    <content><![CDATA[<h4 id="35-搜索插入位置"><a href="#35-搜索插入位置" class="headerlink" title="35. 搜索插入位置"></a><a href="https://leetcode.cn/problems/search-insert-position/">35. 搜索插入位置</a></h4><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
-<p>请必须使用时间复杂度为 O(log n) 的算法。</p>
-<p>示例 1:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: nums &#x3D; [1,3,5,6], target &#x3D; 5</span><br><span class="line">输出: 2</span><br></pre></td></tr></table></figure>
-<p>示例 2:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: nums &#x3D; [1,3,5,6], target &#x3D; 2</span><br><span class="line">输出: 1</span><br></pre></td></tr></table></figure>
-<p>示例 3:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: nums &#x3D; [1,3,5,6], target &#x3D; 7</span><br><span class="line">输出: 4</span><br></pre></td></tr></table></figure>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode.cn/problems/search-insert-position">https://leetcode.cn/problems/search-insert-position</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h4 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nums[mid]&gt;&#x3D;target可能是解，所有解的左边界</span><br><span class="line">二分搜索是闭区间[l,r]，区间外的解要特判</span><br><span class="line">空数组，插入到最后位置的情况</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="code"><a href="#code" class="headerlink" title="code"></a>code</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">searchInsert</span>(<span class="params">nums: <span class="built_in">number</span>[], target: <span class="built_in">number</span></span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> n = nums.length;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// []</span></span><br><span class="line">  <span class="keyword">if</span> (n === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// [1,2,3] 4</span></span><br><span class="line">  <span class="keyword">if</span> (nums[n - <span class="number">1</span>] &lt; target) &#123;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> l = <span class="number">0</span>,</span><br><span class="line">    r = n - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">    <span class="keyword">let</span> mid = (l + r) &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (nums[mid] &gt;= target) r = mid;</span><br><span class="line">    <span class="keyword">else</span> l = mid + <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
@@ -541,6 +517,30 @@
 
 
 <h4 id="code"><a href="#code" class="headerlink" title="code"></a>code</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">combine</span>(<span class="params">n: <span class="built_in">number</span>, k: <span class="built_in">number</span></span>): <span class="title">number</span>[][] </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> res: <span class="built_in">number</span>[][] = [];</span><br><span class="line">  <span class="keyword">let</span> path: <span class="built_in">number</span>[] = [];</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">start: <span class="built_in">number</span>, len: <span class="built_in">number</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (len === k) &#123;</span><br><span class="line">      res.push([...path]);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = start; i &lt;= n; i++) &#123;</span><br><span class="line">      path.push(i);</span><br><span class="line">      dfs(i + <span class="number">1</span>, len + <span class="number">1</span>);</span><br><span class="line">      path.pop();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  dfs(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>leetcode3</title>
+    <url>/posts/d83b9394.html</url>
+    <content><![CDATA[<h4 id="3-无重复字符的最长子串"><a href="#3-无重复字符的最长子串" class="headerlink" title="3. 无重复字符的最长子串"></a><a href="https://leetcode.cn/problems/longest-substring-without-repeating-characters/">3. 无重复字符的最长子串</a></h4><p>给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。</p>
+<p>示例 1:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: s &#x3D; &quot;abcabcbb&quot;</span><br><span class="line">输出: 3 </span><br><span class="line">解释: 因为无重复字符的最长子串是 &quot;abc&quot;，所以其长度为 3。</span><br></pre></td></tr></table></figure>
+<p>示例 2:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: s &#x3D; &quot;bbbbb&quot;</span><br><span class="line">输出: 1</span><br><span class="line">解释: 因为无重复字符的最长子串是 &quot;b&quot;，所以其长度为 1。</span><br></pre></td></tr></table></figure>
+<p>示例 3:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: s &#x3D; &quot;pwwkew&quot;</span><br><span class="line">输出: 3</span><br><span class="line">解释: 因为无重复字符的最长子串是 &quot;wke&quot;，所以其长度为 3。</span><br><span class="line">     请注意，你的答案必须是 子串 的长度，&quot;pwke&quot; 是一个子序列，不是子串。</span><br></pre></td></tr></table></figure>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode.cn/problems/longest-substring-without-repeating-characters">https://leetcode.cn/problems/longest-substring-without-repeating-characters</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h4 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">维护一个无重复的窗口</span><br><span class="line">如果重复就将左边的全裁掉 也去掉与自己相等的</span><br><span class="line"></span><br><span class="line">注意</span><br><span class="line">&quot;abba&quot;</span><br><span class="line">bba  把别人的重复包进去了， l 必须只能往前</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="code"><a href="#code" class="headerlink" title="code"></a>code</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">lengthOfLongestSubstring</span>(<span class="params">s: <span class="built_in">string</span></span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> hash = &#123;&#125;; <span class="comment">// 字符: 最近出现的位置</span></span><br><span class="line">  <span class="keyword">let</span> res = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> l = <span class="number">0</span>, r = <span class="number">0</span>; r &lt; s.length; r++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (s[r] <span class="keyword">in</span> hash) &#123;</span><br><span class="line">      <span class="comment">// 注意max, l往前</span></span><br><span class="line">      l = <span class="built_in">Math</span>.max(l, hash[s[r]] + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    hash[s[r]] = r;</span><br><span class="line">    res = <span class="built_in">Math</span>.max(res, r - l + <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
