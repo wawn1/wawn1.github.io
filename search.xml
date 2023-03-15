@@ -306,6 +306,32 @@
       </categories>
   </entry>
   <entry>
+    <title>leetcode40</title>
+    <url>/posts/4c202528.html</url>
+    <content><![CDATA[<h4 id="40-组合总和-II"><a href="#40-组合总和-II" class="headerlink" title="40. 组合总和 II"></a><a href="https://leetcode.cn/problems/combination-sum-ii/">40. 组合总和 II</a></h4><p>给定一个候选人编号的集合 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。</p>
+<p>candidates 中的每个数字在每个组合中只能使用 一次 。</p>
+<p>注意：解集不能包含重复的组合。 </p>
+<p>示例 1:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: candidates &#x3D; [10,1,2,7,6,1,5], target &#x3D; 8,</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">[1,1,6],</span><br><span class="line">[1,2,5],</span><br><span class="line">[1,7],</span><br><span class="line">[2,6]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>示例 2:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: candidates &#x3D; [2,5,2,1,2], target &#x3D; 5,</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">[1,2,2],</span><br><span class="line">[5]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode.cn/problems/combination-sum-ii">https://leetcode.cn/problems/combination-sum-ii</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h4 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h4><img src="/pic/select-repeat.png"/>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">组合，每次将位置更大的分叉出来</span><br><span class="line">12*选了，12&#39;就可以剪枝</span><br><span class="line">让相同的元素靠在一起，如果发现 nums[i] &#x3D;&#x3D; nums[i-1]，则跳过</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="code"><a href="#code" class="headerlink" title="code"></a>code</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">combinationSum2</span>(<span class="params">nums: <span class="built_in">number</span>[], target: <span class="built_in">number</span></span>): <span class="title">number</span>[][] </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> n = nums.length;</span><br><span class="line">  <span class="comment">// 排序</span></span><br><span class="line">  nums.sort();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> path: <span class="built_in">number</span>[] = [];</span><br><span class="line">  <span class="keyword">let</span> res: <span class="built_in">number</span>[][] = [];</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">start, pathsum</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (pathsum &gt;= target) &#123;</span><br><span class="line">      <span class="keyword">if</span> (pathsum === target) &#123;</span><br><span class="line">        res.push([...path]);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = start; i &lt; n; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (i &gt; start &amp;&amp; nums[i] === nums[i - <span class="number">1</span>]) &#123;</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      path.push(nums[i]);</span><br><span class="line">      dfs(i + <span class="number">1</span>, pathsum + nums[i]);</span><br><span class="line">      path.pop();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  dfs(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode42</title>
     <url>/posts/a22e4404.html</url>
     <content><![CDATA[<h4 id="42-接雨水"><a href="#42-接雨水" class="headerlink" title="42. 接雨水"></a><a href="https://leetcode.cn/problems/trapping-rain-water/">42. 接雨水</a></h4><p>给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。</p>
@@ -314,13 +340,61 @@
 <p>示例 2：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：height &#x3D; [4,2,0,3,2,5]</span><br><span class="line">输出：9</span><br></pre></td></tr></table></figure>
 <p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode.cn/problems/trapping-rain-water">https://leetcode.cn/problems/trapping-rain-water</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h4 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">能存多少水&#x3D;&gt;每个位置能存多少水的和</span><br><span class="line">一个位置能存多少水&#x3D;&gt;min(左边最高，右边最高)-自己高度</span><br><span class="line">如果从右往左，左边最高知道，右边最高怎么办？</span><br><span class="line">如果右边有高度大于左边最高，一个位置能存多少水&#x3D;&gt;左边最高-自己高度</span><br><span class="line"></span><br><span class="line">l从左往右，r从右往左</span><br><span class="line">lmax记录l的左边最高，rmax记录r的右边最高</span><br><span class="line"></span><br><span class="line">如果右边有高度大于左边最高和l，height[r]&gt;lmax and height[l]，l位置可以计算解 r不动</span><br><span class="line">	如果height[l]&gt;&#x3D;lmax res+&#x3D;0 l++ 更新lmax</span><br><span class="line">	如果height[l]&lt;lmax  res+&#x3D;左边最高-自己高度 l++</span><br><span class="line"></span><br><span class="line">如果左边有高度大于右边最高和r，height[l]&gt;rmax and height[r], r位置可以计算解 l不动</span><br><span class="line">	如果height[r]&gt;&#x3D;rmax res+&#x3D;0 r-- 更新rmax</span><br><span class="line">	如果height[r]&lt;rmax  res+&#x3D;右边最高-自己高度 r--</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">能存多少水&#x3D;&gt;每个位置能存多少水的和</span><br><span class="line">一个位置能存多少水&#x3D;&gt;min(左边最高，右边最高)-自己高度</span><br><span class="line">如果从右往左，左边最高知道，右边最高怎么办？</span><br><span class="line">如果右边有高度大于左边最高，一个位置能存多少水&#x3D;&gt;左边最高-自己高度</span><br><span class="line"></span><br><span class="line">l从左往右，r从右往左</span><br><span class="line">lmax记录l的左边最高，rmax记录r的右边最高</span><br><span class="line"></span><br><span class="line">如果右边有高度大于左边最高和l，l位置可以计算解 r不动</span><br><span class="line">	如果height[l]&gt;&#x3D;lmax res+&#x3D;0 l++ 更新lmax</span><br><span class="line">	如果height[l]&lt;lmax  res+&#x3D;左边最高-自己高度 l++</span><br><span class="line">        </span><br><span class="line">如果左边有高度大于右边最高和r, r位置可以计算解 l不动</span><br><span class="line">	如果height[r]&gt;&#x3D;rmax res+&#x3D;0 r-- 更新rmax</span><br><span class="line">	如果height[r]&lt;rmax  res+&#x3D;右边最高-自己高度 r--</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 右边有高度height[r] 大于 height[l] 和 lmax</span><br><span class="line">if(height[r] &gt; height[l] &amp;&amp; height[r] &gt; lmax)&#123;</span><br><span class="line">    走出这个分支路径说明，height[l]成为新lmax，</span><br><span class="line">    new lmax(height[l])&gt;&#x3D;old rmax(height[r])</span><br><span class="line">    也就是左侧有高度height[l] 大于 (height[r]&#x3D;rmax)</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    走出这个分支路径说明，height[r]成为新rmax</span><br><span class="line">    new rmax(height[r])&gt;old lmax(height[l])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
 <h4 id="code"><a href="#code" class="headerlink" title="code"></a>code</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">trap</span>(<span class="params">height: <span class="built_in">number</span>[]</span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> n = height.length;</span><br><span class="line">  <span class="keyword">let</span> l = <span class="number">0</span>,</span><br><span class="line">    r = n - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> res = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> lmax = <span class="number">0</span>,</span><br><span class="line">    rmax = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">    <span class="keyword">if</span> (height[r] &gt; height[l] &amp;&amp; height[r] &gt; lmax) &#123;</span><br><span class="line">      <span class="keyword">if</span> (height[l] &gt;= lmax) &#123;</span><br><span class="line">        lmax = height[l];</span><br><span class="line">        res += <span class="number">0</span>;</span><br><span class="line">        l++;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        res += lmax - height[l];</span><br><span class="line">        l++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (height[r] &gt;= rmax) &#123;</span><br><span class="line">        rmax = height[r];</span><br><span class="line">        res += <span class="number">0</span>;</span><br><span class="line">        r--;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        res += rmax - height[r];</span><br><span class="line">        r--;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
+
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>leetcode46</title>
+    <url>/posts/a543801d.html</url>
+    <content><![CDATA[<h4 id="46-全排列"><a href="#46-全排列" class="headerlink" title="46. 全排列"></a><a href="https://leetcode.cn/problems/permutations/">46. 全排列</a></h4><p>给定一个不含重复数字的数组 nums ，返回其 所有可能的全排列 。你可以 按任意顺序 返回答案。</p>
+<p>示例 1：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [1,2,3]</span><br><span class="line">输出：[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]</span><br></pre></td></tr></table></figure>
+<p>示例 2：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [0,1]</span><br><span class="line">输出：[[0,1],[1,0]]</span><br></pre></td></tr></table></figure>
+<p>示例 3：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [1]</span><br><span class="line">输出：[[1]]</span><br></pre></td></tr></table></figure>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode.cn/problems/permutations">https://leetcode.cn/problems/permutations</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h4 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h4><img src="/pic/permute.png" />
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">每次分叉出来的，除了当前路径选过的，其他都可以选</span><br><span class="line">used 记录选过的，不能再选</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="code"><a href="#code" class="headerlink" title="code"></a>code</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">permute</span>(<span class="params">nums: <span class="built_in">number</span>[]</span>): <span class="title">number</span>[][] </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!nums.length) <span class="keyword">return</span> [];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> n = nums.length;</span><br><span class="line">  <span class="keyword">let</span> res: <span class="built_in">number</span>[][] = [];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> path: <span class="built_in">number</span>[] = [];</span><br><span class="line">  <span class="keyword">let</span> used = <span class="built_in">Array</span>(n).fill(<span class="literal">false</span>);</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">i: <span class="built_in">number</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i === n) &#123;</span><br><span class="line">      res.push([...path]);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!used[j]) &#123;</span><br><span class="line">        path.push(nums[j]);</span><br><span class="line">        used[j] = <span class="literal">true</span>;</span><br><span class="line">        dfs(i + <span class="number">1</span>);</span><br><span class="line">        path.pop();</span><br><span class="line">        used[j] = <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  dfs(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>leetcode47</title>
+    <url>/posts/d244b08b.html</url>
+    <content><![CDATA[<h4 id="47-全排列-II"><a href="#47-全排列-II" class="headerlink" title="47. 全排列 II"></a><a href="https://leetcode.cn/problems/permutations-ii/">47. 全排列 II</a></h4><p>给定一个可包含重复数字的序列 nums ，按任意顺序 返回所有不重复的全排列。</p>
+<p>示例 1：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [1,1,2]</span><br><span class="line">输出：</span><br><span class="line">[[1,1,2],</span><br><span class="line"> [1,2,1],</span><br><span class="line"> [2,1,1]]</span><br></pre></td></tr></table></figure>
+<p>示例 2：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [1,2,3]</span><br><span class="line">输出：[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]</span><br></pre></td></tr></table></figure>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode.cn/problems/permutations-ii">https://leetcode.cn/problems/permutations-ii</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h4 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h4><img src="/pic/permute-repeat.png"/>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">固定相同的元素在排列中的相对位置，排序</span><br><span class="line">只保留位次递增的序列，其余序列都可以剪枝</span><br><span class="line">122&#39;2&#39;&#39;  可以删掉12&#39;22&#39;&#39; 12&#39;&#39;2&#39;2  12&#39;2&#39;&#39;2 12&#39;&#39;22&#39;等</span><br><span class="line">如何判断重复元素里有部分逆序？</span><br><span class="line">当前位置i, 如果i-1没有使用过, 说明i-1后面才用，有逆序</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="code"><a href="#code" class="headerlink" title="code"></a>code</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">permuteUnique</span>(<span class="params">nums: <span class="built_in">number</span>[]</span>): <span class="title">number</span>[][] </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!nums.length) <span class="keyword">return</span> [];</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 排序</span></span><br><span class="line">  nums.sort();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> n = nums.length;</span><br><span class="line">  <span class="keyword">let</span> res: <span class="built_in">number</span>[][] = [];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> path: <span class="built_in">number</span>[] = [];</span><br><span class="line">  <span class="keyword">let</span> used = <span class="built_in">Array</span>(n).fill(<span class="literal">false</span>);</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">i: <span class="built_in">number</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i === n) &#123;</span><br><span class="line">      res.push([...path]);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">      <span class="comment">// 只保留第一个位次递增序列，其余剪枝</span></span><br><span class="line">      <span class="comment">// 递增序列特点，前一个used为true</span></span><br><span class="line">      <span class="comment">// 如果i-1没有使用过说明有逆序</span></span><br><span class="line">      <span class="keyword">if</span> (j &gt; <span class="number">0</span> &amp;&amp; nums[j] === nums[j - <span class="number">1</span>] &amp;&amp; !used[j - <span class="number">1</span>]) &#123;</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 剪枝</span></span><br><span class="line">      <span class="keyword">if</span> (used[j]) &#123;</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      path.push(nums[j]);</span><br><span class="line">      used[j] = <span class="literal">true</span>;</span><br><span class="line">      dfs(i + <span class="number">1</span>);</span><br><span class="line">      path.pop();</span><br><span class="line">      used[j] = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  dfs(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -441,6 +515,32 @@
 
 
 <h4 id="code"><a href="#code" class="headerlink" title="code"></a>code</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sortColors</span>(<span class="params">nums: <span class="built_in">number</span>[]</span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">swap</span>(<span class="params">i: <span class="built_in">number</span>, j: <span class="built_in">number</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> t = nums[i];</span><br><span class="line">    nums[i] = nums[j];</span><br><span class="line">    nums[j] = t;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>,</span><br><span class="line">    j = <span class="number">0</span>,</span><br><span class="line">    k = nums.length - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span> (j &lt;= k) &#123;</span><br><span class="line">    <span class="keyword">let</span> current = nums[j];</span><br><span class="line">    <span class="keyword">if</span> (current === <span class="number">0</span>) &#123;</span><br><span class="line">      swap(i, j);</span><br><span class="line">      i++;</span><br><span class="line">      j++;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (current === <span class="number">1</span>) &#123;</span><br><span class="line">      j++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      swap(j, k);</span><br><span class="line">      k--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>leetcode77</title>
+    <url>/posts/f969e348.html</url>
+    <content><![CDATA[<h4 id="77-组合"><a href="#77-组合" class="headerlink" title="77. 组合"></a><a href="https://leetcode.cn/problems/combinations/">77. 组合</a></h4><p>给定两个整数 n 和 k，返回范围 [1, n] 中所有可能的 k 个数的组合。</p>
+<p>你可以按 任何顺序 返回答案。</p>
+<p>示例 1：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：n &#x3D; 4, k &#x3D; 2</span><br><span class="line">输出：</span><br><span class="line">[</span><br><span class="line">  [2,4],</span><br><span class="line">  [3,4],</span><br><span class="line">  [2,3],</span><br><span class="line">  [1,2],</span><br><span class="line">  [1,3],</span><br><span class="line">  [1,4],</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>示例 2：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：n &#x3D; 1, k &#x3D; 1</span><br><span class="line">输出：[[1]]</span><br></pre></td></tr></table></figure>
+
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode.cn/problems/combinations">https://leetcode.cn/problems/combinations</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h4 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h4><img src="/pic/select.png" />
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">选过的不能选，其他都可以选，来分叉</span><br><span class="line">组合就是  所有比它位置大的分叉出来</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="code"><a href="#code" class="headerlink" title="code"></a>code</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">combine</span>(<span class="params">n: <span class="built_in">number</span>, k: <span class="built_in">number</span></span>): <span class="title">number</span>[][] </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> res: <span class="built_in">number</span>[][] = [];</span><br><span class="line">  <span class="keyword">let</span> path: <span class="built_in">number</span>[] = [];</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">start: <span class="built_in">number</span>, len: <span class="built_in">number</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (len === k) &#123;</span><br><span class="line">      res.push([...path]);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = start; i &lt;= n; i++) &#123;</span><br><span class="line">      path.push(i);</span><br><span class="line">      dfs(i + <span class="number">1</span>, len + <span class="number">1</span>);</span><br><span class="line">      path.pop();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  dfs(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
