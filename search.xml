@@ -501,6 +501,28 @@
       </categories>
   </entry>
   <entry>
+    <title>leetcode560</title>
+    <url>/posts/96ba9a4f.html</url>
+    <content><![CDATA[<h4 id="560-和为-K-的子数组"><a href="#560-和为-K-的子数组" class="headerlink" title="560. 和为 K 的子数组"></a><a href="https://leetcode.cn/problems/subarray-sum-equals-k/">560. 和为 K 的子数组</a></h4><p>给你一个整数数组 nums 和一个整数 k ，请你统计并返回 该数组中和为 k 的连续子数组的个数 。</p>
+<p>示例 1：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [1,1,1], k &#x3D; 2</span><br><span class="line">输出：2</span><br></pre></td></tr></table></figure>
+<p>示例 2：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [1,2,3], k &#x3D; 3</span><br><span class="line">输出：2</span><br></pre></td></tr></table></figure>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode.cn/problems/subarray-sum-equals-k">https://leetcode.cn/problems/subarray-sum-equals-k</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h4 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">预处理前缀和数组</span><br><span class="line">从左往右遍历前缀和数组，当前位置的解&#x3D;左侧位置中 前缀和为当前值-k的数量</span><br><span class="line"></span><br><span class="line">只用考虑比当前前缀和小k的，比当前前缀和大k的情况，存在于后面位置的部分解</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="code"><a href="#code" class="headerlink" title="code"></a>code</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">subarraySum</span>(<span class="params">nums: <span class="built_in">number</span>[], k: <span class="built_in">number</span></span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> n = nums.length;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> sum = [<span class="number">0</span>]; <span class="comment">// padding一个0</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    sum[i] = sum[i - <span class="number">1</span>] + nums[i - <span class="number">1</span>];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> hash = &#123;&#125;;</span><br><span class="line">  <span class="keyword">let</span> res = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    res += (hash[sum[i] - k] || <span class="number">0</span>);</span><br><span class="line">    hash[sum[i]] = (hash[sum[i]] || <span class="number">0</span>) + <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode583</title>
     <url>/posts/9130e67b.html</url>
     <content><![CDATA[<h4 id="583-两个字符串的删除操作"><a href="#583-两个字符串的删除操作" class="headerlink" title="583. 两个字符串的删除操作"></a><a href="https://leetcode.cn/problems/delete-operation-for-two-strings/">583. 两个字符串的删除操作</a></h4><p>给定两个单词 word1 和 word2 ，返回使得 word1 和  word2 相同所需的最小步数。</p>
