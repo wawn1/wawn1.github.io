@@ -640,6 +640,30 @@
       </categories>
   </entry>
   <entry>
+    <title>leetcode75</title>
+    <url>/posts/17678264.html</url>
+    <content><![CDATA[<h4 id="75-颜色分类"><a href="#75-颜色分类" class="headerlink" title="75. 颜色分类"></a><a href="https://leetcode.cn/problems/sort-colors/">75. 颜色分类</a></h4><p>给定一个包含红色、白色和蓝色、共 n 个元素的数组 nums ，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。</p>
+<p>我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。</p>
+<p>必须在不使用库内置的 sort 函数的情况下解决这个问题。</p>
+<p>示例 1：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [2,0,2,1,1,0]</span><br><span class="line">输出：[0,0,1,1,2,2]</span><br></pre></td></tr></table></figure>
+<p>示例 2：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [2,0,1]</span><br><span class="line">输出：[0,1,2]</span><br></pre></td></tr></table></figure>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode.cn/problems/sort-colors">https://leetcode.cn/problems/sort-colors</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h4 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">维护i的左边不包括i位置元素，都是0</span><br><span class="line">维护k的右边不包括k位置元素，都是1</span><br><span class="line">隔板</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="code"><a href="#code" class="headerlink" title="code"></a>code</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sortColors</span>(<span class="params">nums: <span class="built_in">number</span>[]</span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">swap</span>(<span class="params">i: <span class="built_in">number</span>, j: <span class="built_in">number</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> t = nums[i];</span><br><span class="line">    nums[i] = nums[j];</span><br><span class="line">    nums[j] = t;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>,</span><br><span class="line">    j = <span class="number">0</span>,</span><br><span class="line">    k = nums.length - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span> (j &lt;= k) &#123;</span><br><span class="line">    <span class="keyword">let</span> current = nums[j];</span><br><span class="line">    <span class="keyword">if</span> (current === <span class="number">0</span>) &#123;</span><br><span class="line">      swap(i, j);</span><br><span class="line">      i++;</span><br><span class="line">      j++;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (current === <span class="number">1</span>) &#123;</span><br><span class="line">      j++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      swap(j, k);</span><br><span class="line">      k--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode77</title>
     <url>/posts/f969e348.html</url>
     <content><![CDATA[<h4 id="77-组合"><a href="#77-组合" class="headerlink" title="77. 组合"></a><a href="https://leetcode.cn/problems/combinations/">77. 组合</a></h4><p>给定两个整数 n 和 k，返回范围 [1, n] 中所有可能的 k 个数的组合。</p>
@@ -657,30 +681,6 @@
 
 
 <h4 id="code"><a href="#code" class="headerlink" title="code"></a>code</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">combine</span>(<span class="params">n: <span class="built_in">number</span>, k: <span class="built_in">number</span></span>): <span class="title">number</span>[][] </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> res: <span class="built_in">number</span>[][] = [];</span><br><span class="line">  <span class="keyword">let</span> path: <span class="built_in">number</span>[] = [];</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">start: <span class="built_in">number</span>, len: <span class="built_in">number</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (len === k) &#123;</span><br><span class="line">      res.push([...path]);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = start; i &lt;= n; i++) &#123;</span><br><span class="line">      path.push(i);</span><br><span class="line">      dfs(i + <span class="number">1</span>, len + <span class="number">1</span>);</span><br><span class="line">      path.pop();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  dfs(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>Algorithm</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>leetcode75</title>
-    <url>/posts/17678264.html</url>
-    <content><![CDATA[<h4 id="75-颜色分类"><a href="#75-颜色分类" class="headerlink" title="75. 颜色分类"></a><a href="https://leetcode.cn/problems/sort-colors/">75. 颜色分类</a></h4><p>给定一个包含红色、白色和蓝色、共 n 个元素的数组 nums ，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。</p>
-<p>我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。</p>
-<p>必须在不使用库内置的 sort 函数的情况下解决这个问题。</p>
-<p>示例 1：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [2,0,2,1,1,0]</span><br><span class="line">输出：[0,0,1,1,2,2]</span><br></pre></td></tr></table></figure>
-<p>示例 2：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [2,0,1]</span><br><span class="line">输出：[0,1,2]</span><br></pre></td></tr></table></figure>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode.cn/problems/sort-colors">https://leetcode.cn/problems/sort-colors</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h4 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">维护i的左边不包括i位置元素，都是0</span><br><span class="line">维护k的右边不包括k位置元素，都是1</span><br><span class="line">隔板</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="code"><a href="#code" class="headerlink" title="code"></a>code</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sortColors</span>(<span class="params">nums: <span class="built_in">number</span>[]</span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">swap</span>(<span class="params">i: <span class="built_in">number</span>, j: <span class="built_in">number</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> t = nums[i];</span><br><span class="line">    nums[i] = nums[j];</span><br><span class="line">    nums[j] = t;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>,</span><br><span class="line">    j = <span class="number">0</span>,</span><br><span class="line">    k = nums.length - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span> (j &lt;= k) &#123;</span><br><span class="line">    <span class="keyword">let</span> current = nums[j];</span><br><span class="line">    <span class="keyword">if</span> (current === <span class="number">0</span>) &#123;</span><br><span class="line">      swap(i, j);</span><br><span class="line">      i++;</span><br><span class="line">      j++;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (current === <span class="number">1</span>) &#123;</span><br><span class="line">      j++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      swap(j, k);</span><br><span class="line">      k--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
