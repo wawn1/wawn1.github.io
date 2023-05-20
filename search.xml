@@ -750,7 +750,7 @@
   <entry>
     <title>react源码学习-scheduler</title>
     <url>/posts/78409aac.html</url>
-    <content><![CDATA[<h4 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h4><p>将performConcurrentWorkOnRoot单个fiber的diff任务放到最小堆里<br>通过MessageChannel在下次宏任务时执行workLoop，直到5ms时间片不够了或者最小堆空了</p>
+    <content><![CDATA[<h4 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h4><p>将performConcurrentWorkOnRoot单个fiber的diff任务放到最小堆里<br>通过MessageChannel在下次宏任务时执行workLoop，workLoop就是不断从最小堆取任务执行，直到5ms时间片不够了或者最小堆空了</p>
 <p>useEffect的任务也放在最小堆里，优先级是NormalSchedulerPriority</p>
 <ol>
 <li>ImmediateSchedulerPriority<br>ImmediateSchedulerPriority 调度级别是最高优先级的调度级别，表示更新任务应该立即执行，而不应该等待浏览器空闲。</li>
